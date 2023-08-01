@@ -1,6 +1,7 @@
 :root {
 	font-size: 16px;
 	font-family: Arial, Helvetica, sans-serif;
+	--max-w: 1024px;
 	--h-navbar: 50px;
 	--primary-100: #26a69a;
 	--primary-200: #408d86;

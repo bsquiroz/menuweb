@@ -16,6 +16,9 @@ export const Navbar = () => {
 	);
 
 	const classMenu = isVisibleMenu ? "menu menu--show" : "menu";
+	const classIconMenu = isVisibleMenu
+		? "bx bx-x icon--menu"
+		: "bx bx-menu icon--menu";
 
 	return (
 		<header className="content__navbar">
@@ -27,7 +30,7 @@ export const Navbar = () => {
 				<div className="navbar__opt">
 					<DarkMode />
 					<i
-						className="bx bx-menu icon--menu"
+						className={classIconMenu}
 						onClick={() => setIsVisibleMenu(!isVisibleMenu)}
 					></i>
 				</div>

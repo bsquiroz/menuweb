@@ -10,12 +10,17 @@
 }
 
 .navbar {
-	max-width: 1024px;
+	max-width: var(--max-w);
 	margin: auto;
 	display: flex;
 	gap: 1rem;
 	justify-content: space-between;
 	height: 100%;
+}
+
+.navbar__logo {
+	font-weight: bold;
+	letter-spacing: 2px;
 }
 
 .navbar i {
