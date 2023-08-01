@@ -35,13 +35,16 @@ export const CardBanner = () => {
 					className="bx bxs-info-circle icon_info"
 					onClick={() => setIsShowBanner(!isShowBanner)}
 				></i>
-				<video
-					className="banner__info__video"
-					src={selectItem?.video}
-					autoPlay
-					loop
-					playsInline
-				></video>
+				<div className="banner__info__video">
+					<video
+						src={selectItem?.video}
+						autoPlay
+						loop
+						playsInline
+						poster={selectItem?.picture}
+					></video>
+				</div>
+
 				<div className={classBannerInfo}>
 					<h3 className="banner__info__title">{selectItem?.title}</h3>
 					<p className="banner__info__description">
