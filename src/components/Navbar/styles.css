@@ -21,6 +21,12 @@
 	cursor: pointer;
 }
 
+.navbar__opt {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
 .menu {
 	position: fixed;
 	top: var(--h-navbar);

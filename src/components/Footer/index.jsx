@@ -7,7 +7,7 @@ export const Footer = () => {
 			<p>Hecho con mucho amor para todos ustedes</p>
 			<p>Siguenos</p>
 			<a href="#">
-				<i class="bx bxl-instagram"></i>
+				<i className="bx bxl-instagram"></i>
 			</a>
 		</footer>
 	);

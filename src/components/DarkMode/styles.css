@@ -1,0 +1,30 @@
+.darkmode {
+	background-color: var(--text-100);
+	border-radius: 20px;
+	padding: 0.2rem;
+	width: 60px;
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+}
+
+.darkmode i {
+	font-size: 1.5rem;
+}
+
+.darkmode__ball {
+	position: absolute;
+	width: 50%;
+	height: 100%;
+	top: 0;
+	right: -5px;
+	background-color: var(--bg-100);
+	/* background-color: red; */
+	border-radius: 50%;
+	display: block;
+	transition: transform 0.5s;
+}
+
+.darkmode__ball--left {
+	transform: translateX(-40px);
+}

@@ -2,15 +2,15 @@
 	font-size: 16px;
 	font-family: Arial, Helvetica, sans-serif;
 	--h-navbar: 50px;
-	--primary-100: #8b5fbf;
-	--primary-200: #61398f;
-	--primary-300: #ffffff;
-	--accent-100: #d6c6e1;
-	--accent-200: #9a73b5;
-	--text-100: #4a4a4a;
-	--text-200: #878787;
-	--bg-100: #f5f3f7;
-	--bg-200: #e9e4ed;
+	--primary-100: #26a69a;
+	--primary-200: #408d86;
+	--primary-300: #cdfaf6;
+	--accent-100: #80cbc4;
+	--accent-200: #43a49b;
+	--text-100: #263339;
+	--text-200: #728f9e;
+	--bg-100: #e0f2f1;
+	--bg-200: #d0ebea;
 	--bg-300: #ffffff;
 }
 

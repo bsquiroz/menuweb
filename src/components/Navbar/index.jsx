@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./styles.css";
 import { useSelector, useDispatch } from "react-redux";
 import { filterMenuData } from "../../store/menuSlice";
+import { DarkMode } from "../DarkMode";
 
 export const Navbar = () => {
 	const dispatch = useDispatch();
@@ -22,10 +23,13 @@ export const Navbar = () => {
 				LOGO
 			</a>
 
-			<i
-				className="bx bx-menu icon--menu"
-				onClick={() => setIsVisibleMenu(!isVisibleMenu)}
-			></i>
+			<div className="navbar__opt">
+				<DarkMode />
+				<i
+					className="bx bx-menu icon--menu"
+					onClick={() => setIsVisibleMenu(!isVisibleMenu)}
+				></i>
+			</div>
 
 			<ul className={classMenu}>
 				<li
