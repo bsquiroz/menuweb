@@ -26,4 +26,70 @@
 	top: 1rem;
 	left: 1rem;
 	font-size: 2rem;
+	z-index: var(--z-icon-back);
+}
+
+.banner .icon_info {
+	position: absolute;
+	top: 4rem;
+	left: 1rem;
+	font-size: 2rem;
+	z-index: var(--z-icon-back);
+}
+
+.banner__info {
+	position: fixed;
+	top: var(--h-navbar);
+	background-color: red;
+	left: 0;
+	width: 100%;
+	height: calc(100% - var(--h-navbar));
+	background: linear-gradient(
+		0deg,
+		var(--primary-100) 0%,
+		rgba(0, 0, 0, 0) 100%
+	);
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.5s, visibility 0.5s;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	padding: 1rem;
+	gap: 1rem;
+}
+
+.banner__info--show {
+	opacity: 1;
+	visibility: visible;
+}
+
+.banner__info__title {
+	text-transform: uppercase;
+	font-size: 2rem;
+	text-align: center;
+}
+
+.banner__info__description {
+	font-size: 1.5rem;
+}
+
+.banner__info__price {
+	font-size: 1.5rem;
+}
+
+.banner__info__price--desc {
+	font-size: 1.5rem;
+	text-decoration: line-through;
+}
+
+.banner__info__offer {
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+.ingredients {
+	display: flex;
+	gap: 0.5rem;
 }

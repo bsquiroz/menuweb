@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { findProductMenuById } from "../../store/menuSlice";
 import "./styles.css";
+import { formattedPrice, formattedOffer } from "../../helpers";
 
 export const CardBanner = () => {
+	const [isShowBanner, setIsShowBanner] = useState(false);
 	const selectItem = useSelector((state) => state.menu.selectItem);
 	const dispatch = useDispatch();
 
@@ -11,13 +13,66 @@ export const CardBanner = () => {
 		? "cardBanner cardBanner--show"
 		: "cardBanner";
 
+	const classBannerInfo = isShowBanner
+		? "banner__info banner__info--show"
+		: "banner__info";
+
+	const classBannerPrice = selectItem?.offer
+		? "banner__info__price--desc"
+		: "banner__info__price";
+
 	return (
 		<div className={classCardBanner}>
 			<div className="banner">
 				<i
 					className="bx bxs-chevron-left-circle icon_left"
-					onClick={() => dispatch(findProductMenuById({ id: null }))}
+					onClick={() => {
+						dispatch(findProductMenuById({ id: null }));
+						setIsShowBanner(false);
+					}}
 				></i>
+				<i
+					className="bx bxs-info-circle icon_info"
+					onClick={() => setIsShowBanner(!isShowBanner)}
+				></i>
+				<video
+					className="banner__info__video"
+					src={selectItem?.video}
+					autoPlay
+					loop
+					playsInline
+				></video>
+				<div className={classBannerInfo}>
+					<h3 className="banner__info__title">{selectItem?.title}</h3>
+					<p className="banner__info__description">
+						{selectItem?.description}
+					</p>
+					<p className={classBannerPrice}>
+						precio: {formattedPrice(selectItem?.price)}
+					</p>
+					{selectItem?.offer ? (
+						<p className="banner__info__offer">
+							precio por hoy:{" "}
+							{formattedOffer(
+								selectItem?.price,
+								selectItem?.offer
+							)}
+						</p>
+					) : null}
+
+					<div className="content_ingredients">
+						<p>
+							<b>Ingredientes</b>
+						</p>
+						<ul className="ingredients">
+							{selectItem?.ingredients.map(
+								({ id, icon, picture, title }) => (
+									<li key={id}>{title}</li>
+								)
+							)}
+						</ul>
+					</div>
+				</div>
 			</div>
 		</div>
 	);
