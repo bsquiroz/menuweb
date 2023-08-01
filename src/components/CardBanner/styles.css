@@ -1,0 +1,29 @@
+.cardBanner {
+	top: var(--h-navbar);
+	left: 0;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.5s, visibility 0.5s;
+}
+
+.cardBanner--show {
+	opacity: 1;
+	visibility: visible;
+}
+
+.banner {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.banner .icon_left {
+	position: absolute;
+	top: 1rem;
+	left: 1rem;
+	font-size: 2rem;
+}
