@@ -11,8 +11,8 @@ import {
 export const Menu = () => {
 	return (
 		<>
+			<Navbar />
 			<Container>
-				<Navbar />
 				<Header />
 				<Board />
 				<CardBanner />

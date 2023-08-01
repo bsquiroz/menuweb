@@ -18,46 +18,48 @@ export const Navbar = () => {
 	const classMenu = isVisibleMenu ? "menu menu--show" : "menu";
 
 	return (
-		<nav className="navbar">
-			<a href="#" className="navbar__logo">
-				LOGO
-			</a>
+		<header className="content__navbar">
+			<nav className="navbar">
+				<a href="#" className="navbar__logo">
+					LOGO
+				</a>
 
-			<div className="navbar__opt">
-				<DarkMode />
-				<i
-					className="bx bx-menu icon--menu"
-					onClick={() => setIsVisibleMenu(!isVisibleMenu)}
-				></i>
-			</div>
+				<div className="navbar__opt">
+					<DarkMode />
+					<i
+						className="bx bx-menu icon--menu"
+						onClick={() => setIsVisibleMenu(!isVisibleMenu)}
+					></i>
+				</div>
 
-			<ul className={classMenu}>
-				<li
-					className="item"
-					onClick={() => {
-						dispatch(filterMenuData({ tag: false }));
-						setIsVisibleMenu(!isVisibleMenu);
-					}}
-				>
-					<p>todos</p>
-					<span>{products.length}</span>
-				</li>
-				{productsMenu.map(([key, value]) => {
-					return (
-						<li
-							className="item"
-							key={key}
-							onClick={() => {
-								dispatch(filterMenuData({ tag: key }));
-								setIsVisibleMenu(!isVisibleMenu);
-							}}
-						>
-							<p>{key}</p>
-							<span>{value}</span>
-						</li>
-					);
-				})}
-			</ul>
-		</nav>
+				<ul className={classMenu}>
+					<li
+						className="item"
+						onClick={() => {
+							dispatch(filterMenuData({ tag: false }));
+							setIsVisibleMenu(!isVisibleMenu);
+						}}
+					>
+						<p>todos</p>
+						<span>{products.length}</span>
+					</li>
+					{productsMenu.map(([key, value]) => {
+						return (
+							<li
+								className="item"
+								key={key}
+								onClick={() => {
+									dispatch(filterMenuData({ tag: key }));
+									setIsVisibleMenu(!isVisibleMenu);
+								}}
+							>
+								<p>{key}</p>
+								<span>{value}</span>
+							</li>
+						);
+					})}
+				</ul>
+			</nav>
+		</header>
 	);
 };
