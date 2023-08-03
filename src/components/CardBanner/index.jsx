@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
 	findProductMenuById,
@@ -33,6 +33,14 @@ export const CardBanner = () => {
 		};
 	}, [selectItem]);
 
+	useEffect(() => {
+		if (selectItem) {
+			document.body.style.overflow = "hidden";
+		} else {
+			document.body.style.overflow = "auto";
+		}
+	}, [selectItem]);
+
 	return (
 		<div className={classCardBanner}>
 			<div className="banner">
@@ -61,7 +69,7 @@ export const CardBanner = () => {
 					className="banner__show__more"
 					onClick={() => dispatch(handleShowBannerProduct(true))}
 				>
-					<p>Ver mas</p>
+					<p>Ver información</p>
 				</div>
 
 				<div className={classBannerInfo}>
