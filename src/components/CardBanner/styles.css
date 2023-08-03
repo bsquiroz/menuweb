@@ -99,8 +99,22 @@
 }
 
 .ingredients {
-	display: flex;
+	margin-top: 1rem;
+	/* display: flex;
+	flex-wrap: wrap; */
 	gap: 0.5rem;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+.ingredient {
+	text-align: center;
+	/* flex-basis: 20%;
+	flex-grow: 1; */
+	border: 1px solid var(--text-100);
+	border-radius: 5px;
+	display: grid;
+	place-items: center;
+	padding: 5px;
 }
 
 .banner__show__more {

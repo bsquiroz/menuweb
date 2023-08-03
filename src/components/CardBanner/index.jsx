@@ -97,7 +97,9 @@ export const CardBanner = () => {
 						<ul className="ingredients">
 							{selectItem?.ingredients.map(
 								({ id, icon, picture, title }) => (
-									<li key={id}>{title}</li>
+									<li key={id} className="ingredient">
+										{title}
+									</li>
 								)
 							)}
 						</ul>
