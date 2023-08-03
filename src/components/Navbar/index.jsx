@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import "./styles.css";
 import { useSelector, useDispatch } from "react-redux";
-import { filterMenuData, findProductMenuById } from "../../store/menuSlice";
+import {
+	filterMenuData,
+	findProductMenuById,
+	handleShowMenu,
+} from "../../store/menuSlice";
 import { DarkMode } from "../DarkMode";
 
 export const Navbar = () => {
 	const dispatch = useDispatch();
-	const [isVisibleMenu, setIsVisibleMenu] = useState(false);
 	const products = useSelector((state) => state.menu.menuData);
+	const showMenu = useSelector((state) => state.menu.showMenu);
+
 	const productsMenu = Object.entries(
 		products.reduce((acum, curr) => {
 			acum[curr.tag] = acum[curr.tag] + 1 || 1;
@@ -15,8 +20,8 @@ export const Navbar = () => {
 		}, {})
 	);
 
-	const classMenu = isVisibleMenu ? "menu menu--show" : "menu";
-	const classIconMenu = isVisibleMenu
+	const classMenu = showMenu ? "menu menu--show" : "menu";
+	const classIconMenu = showMenu
 		? "bx bx-x icon--menu"
 		: "bx bx-menu icon--menu";
 
@@ -31,7 +36,7 @@ export const Navbar = () => {
 					<DarkMode />
 					<i
 						className={classIconMenu}
-						onClick={() => setIsVisibleMenu(!isVisibleMenu)}
+						onClick={() => dispatch(handleShowMenu(!showMenu))}
 					></i>
 				</div>
 
@@ -41,7 +46,7 @@ export const Navbar = () => {
 						onClick={() => {
 							dispatch(filterMenuData({ tag: false }));
 							dispatch(findProductMenuById({ id: null }));
-							setIsVisibleMenu(!isVisibleMenu);
+							dispatch(handleShowMenu(!showMenu));
 						}}
 					>
 						<p>todos</p>
@@ -55,7 +60,7 @@ export const Navbar = () => {
 								onClick={() => {
 									dispatch(filterMenuData({ tag: key }));
 									dispatch(findProductMenuById({ id: null }));
-									setIsVisibleMenu(!isVisibleMenu);
+									dispatch(handleShowMenu(!showMenu));
 								}}
 							>
 								<p>{key}</p>

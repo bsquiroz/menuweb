@@ -7,6 +7,7 @@ const initialState = {
 	titleHeader: "todos",
 	selectItem: null,
 	showBannerProduct: false,
+	showMenu: false,
 };
 
 export const counterSlice = createSlice({
@@ -32,10 +33,17 @@ export const counterSlice = createSlice({
 		handleShowBannerProduct: (state, action) => {
 			state.showBannerProduct = action.payload;
 		},
+		handleShowMenu: (state, action) => {
+			state.showMenu = action.payload;
+		},
 	},
 });
 
-export const { findProductMenuById, filterMenuData, handleShowBannerProduct } =
-	counterSlice.actions;
+export const {
+	findProductMenuById,
+	filterMenuData,
+	handleShowBannerProduct,
+	handleShowMenu,
+} = counterSlice.actions;
 
 export default counterSlice.reducer;

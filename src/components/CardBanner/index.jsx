@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
 	findProductMenuById,
 	handleShowBannerProduct,
+	handleShowMenu,
 } from "../../store/menuSlice";
 import "./styles.css";
 import { formattedPrice, formattedOffer } from "../../helpers";
@@ -46,7 +47,10 @@ export const CardBanner = () => {
 			<div className="banner">
 				<i
 					className="bx bxs-chevron-left-circle icon_left"
-					onClick={() => dispatch(findProductMenuById({ id: null }))}
+					onClick={() => {
+						dispatch(handleShowMenu(false));
+						dispatch(findProductMenuById({ id: null }));
+					}}
 				></i>
 				{showBannerProduct && (
 					<i

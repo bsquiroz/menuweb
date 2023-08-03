@@ -2,13 +2,14 @@ import React from "react";
 import "./styles.css";
 
 import { useDispatch } from "react-redux";
-import { findProductMenuById } from "../../store/menuSlice";
+import { findProductMenuById, handleShowMenu } from "../../store/menuSlice";
 
 export const Card = ({ title, picture, id }) => {
 	const dispatch = useDispatch();
 
 	const handleClick = (cardId) => {
 		dispatch(findProductMenuById({ id: cardId }));
+		dispatch(handleShowMenu(false));
 	};
 
 	return (
