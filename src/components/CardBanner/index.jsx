@@ -1,19 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { findProductMenuById } from "../../store/menuSlice";
+import {
+	findProductMenuById,
+	handleShowBannerProduct,
+} from "../../store/menuSlice";
 import "./styles.css";
 import { formattedPrice, formattedOffer } from "../../helpers";
 
 export const CardBanner = () => {
-	const [isShowBanner, setIsShowBanner] = useState(false);
 	const selectItem = useSelector((state) => state.menu.selectItem);
+	const showBannerProduct = useSelector(
+		(state) => state.menu.showBannerProduct
+	);
+
 	const dispatch = useDispatch();
 
 	const classCardBanner = selectItem
 		? "cardBanner cardBanner--show"
 		: "cardBanner";
 
-	const classBannerInfo = isShowBanner
+	const classBannerInfo = showBannerProduct
 		? "banner__info banner__info--show"
 		: "banner__info";
 
@@ -21,20 +27,23 @@ export const CardBanner = () => {
 		? "banner__info__price--desc"
 		: "banner__info__price";
 
+	useEffect(() => {
+		return () => {
+			dispatch(handleShowBannerProduct(false));
+		};
+	}, [selectItem]);
+
 	return (
 		<div className={classCardBanner}>
 			<div className="banner">
 				<i
 					className="bx bxs-chevron-left-circle icon_left"
-					onClick={() => {
-						dispatch(findProductMenuById({ id: null }));
-						setIsShowBanner(false);
-					}}
+					onClick={() => dispatch(findProductMenuById({ id: null }))}
 				></i>
-				{isShowBanner && (
+				{showBannerProduct && (
 					<i
 						className="bx bxs-x-circle icon_close_banner"
-						onClick={() => setIsShowBanner(false)}
+						onClick={() => dispatch(handleShowBannerProduct(false))}
 					></i>
 				)}
 
@@ -50,7 +59,7 @@ export const CardBanner = () => {
 
 				<div
 					className="banner__show__more"
-					onClick={() => setIsShowBanner(true)}
+					onClick={() => dispatch(handleShowBannerProduct(true))}
 				>
 					<p>Ver mas</p>
 				</div>

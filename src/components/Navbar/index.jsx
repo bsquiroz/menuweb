@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./styles.css";
 import { useSelector, useDispatch } from "react-redux";
-import { filterMenuData } from "../../store/menuSlice";
+import { filterMenuData, findProductMenuById } from "../../store/menuSlice";
 import { DarkMode } from "../DarkMode";
 
 export const Navbar = () => {
@@ -40,6 +40,7 @@ export const Navbar = () => {
 						className="item"
 						onClick={() => {
 							dispatch(filterMenuData({ tag: false }));
+							dispatch(findProductMenuById({ id: null }));
 							setIsVisibleMenu(!isVisibleMenu);
 						}}
 					>
@@ -53,6 +54,7 @@ export const Navbar = () => {
 								key={key}
 								onClick={() => {
 									dispatch(filterMenuData({ tag: key }));
+									dispatch(findProductMenuById({ id: null }));
 									setIsVisibleMenu(!isVisibleMenu);
 								}}
 							>

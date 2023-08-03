@@ -4,7 +4,6 @@
 	position: fixed;
 	width: 100%;
 	height: 100%;
-	background-color: rgba(0, 0, 0, 0.5);
 	opacity: 0;
 	visibility: hidden;
 	transition: opacity 0.5s, visibility 0.5s;
@@ -40,7 +39,6 @@
 .banner__info {
 	position: fixed;
 	top: var(--h-navbar);
-	background-color: red;
 	left: 0;
 	width: 100%;
 	height: calc(100% - var(--h-navbar));
