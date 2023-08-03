@@ -31,10 +31,13 @@ export const CardBanner = () => {
 						setIsShowBanner(false);
 					}}
 				></i>
-				<i
-					className="bx bxs-info-circle icon_info"
-					onClick={() => setIsShowBanner(!isShowBanner)}
-				></i>
+				{isShowBanner && (
+					<i
+						className="bx bxs-x-circle icon_close_banner"
+						onClick={() => setIsShowBanner(false)}
+					></i>
+				)}
+
 				<div className="banner__info__video">
 					<video
 						src={selectItem?.video}
@@ -43,6 +46,13 @@ export const CardBanner = () => {
 						playsInline
 						poster={selectItem?.picture}
 					></video>
+				</div>
+
+				<div
+					className="banner__show__more"
+					onClick={() => setIsShowBanner(true)}
+				>
+					<p>Ver mas</p>
 				</div>
 
 				<div className={classBannerInfo}>
