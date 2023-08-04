@@ -8,3 +8,26 @@ export const formattedOffer = (price, offer) => {
 	const priceInCOP = (price - desc) * 1000;
 	return priceInCOP.toLocaleString("es-CO") + " cop";
 };
+
+export const productsMenu = (products) => {
+	return Object.values(
+		products.reduce(
+			(acum, curr) => {
+				acum[curr.tag] = {
+					title: curr.tag,
+					amount: acum[curr.tag]?.amount + 1 || 1,
+					state: false,
+				};
+
+				return acum;
+			},
+			{
+				todos: {
+					title: "todos",
+					amount: products.length,
+					state: true,
+				},
+			}
+		)
+	);
+};

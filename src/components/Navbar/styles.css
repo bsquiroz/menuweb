@@ -66,6 +66,19 @@
 	cursor: pointer;
 }
 
+.item--active {
+	background-color: var(--text-100);
+	align-items: center;
+	justify-content: center;
+	padding: 5px;
+	border-radius: 5px;
+	color: var(--primary-100);
+}
+
+.item--active span {
+	color: var(--text-100);
+}
+
 .item span {
 	background-color: var(--primary-100);
 	width: 20px;

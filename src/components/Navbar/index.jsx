@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./styles.css";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -7,23 +7,29 @@ import {
 	handleShowMenu,
 } from "../../store/menuSlice";
 import { DarkMode } from "../DarkMode";
+import { productsMenu } from "../../helpers";
 
 export const Navbar = () => {
 	const dispatch = useDispatch();
 	const products = useSelector((state) => state.menu.menuData);
 	const showMenu = useSelector((state) => state.menu.showMenu);
 
-	const productsMenu = Object.entries(
-		products.reduce((acum, curr) => {
-			acum[curr.tag] = acum[curr.tag] + 1 || 1;
-			return acum;
-		}, {})
-	);
+	const [itemProducts, setItemProducts] = useState(productsMenu(products));
 
 	const classMenu = showMenu ? "menu menu--show" : "menu";
 	const classIconMenu = showMenu
 		? "bx bx-x icon--menu"
 		: "bx bx-menu icon--menu";
+
+	const handleSetItemProducts = (title) => {
+		setItemProducts(
+			itemProducts.map((item) =>
+				item.title === title
+					? { ...item, state: true }
+					: { ...item, state: false }
+			)
+		);
+	};
 
 	return (
 		<header className="content__navbar">
@@ -41,31 +47,15 @@ export const Navbar = () => {
 				</div>
 
 				<ul className={classMenu}>
-					<li
-						className="item"
-						onClick={() => {
-							dispatch(filterMenuData({ tag: false }));
-							dispatch(findProductMenuById({ id: null }));
-							dispatch(handleShowMenu(!showMenu));
-						}}
-					>
-						<p>todos</p>
-						<span>{products.length}</span>
-					</li>
-					{productsMenu.map(([key, value]) => {
+					{itemProducts.map(({ amount, state, title }) => {
 						return (
-							<li
-								className="item"
-								key={key}
-								onClick={() => {
-									dispatch(filterMenuData({ tag: key }));
-									dispatch(findProductMenuById({ id: null }));
-									dispatch(handleShowMenu(!showMenu));
-								}}
-							>
-								<p>{key}</p>
-								<span>{value}</span>
-							</li>
+							<ItemMenu
+								key={title}
+								title={title}
+								amount={amount}
+								isActiveItem={state}
+								handleSetItemProducts={handleSetItemProducts}
+							/>
 						);
 					})}
 				</ul>
@@ -73,3 +63,25 @@ export const Navbar = () => {
 		</header>
 	);
 };
+
+function ItemMenu({ title, amount, isActiveItem, handleSetItemProducts }) {
+	const dispatch = useDispatch();
+	const showMenu = useSelector((state) => state.menu.showMenu);
+
+	const classItemMenu = isActiveItem ? "item item--active" : "item";
+
+	return (
+		<li
+			className={classItemMenu}
+			onClick={() => {
+				dispatch(filterMenuData({ tag: title }));
+				dispatch(findProductMenuById({ id: null }));
+				dispatch(handleShowMenu(!showMenu));
+				handleSetItemProducts(title);
+			}}
+		>
+			<p>{title}</p>
+			<span>{amount}</span>
+		</li>
+	);
+}

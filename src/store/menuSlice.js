@@ -20,7 +20,7 @@ export const counterSlice = createSlice({
 			);
 		},
 		filterMenuData: (state, action) => {
-			if (action.payload.tag) {
+			if (action.payload.tag !== "todos") {
 				state.menuDataFilter = state.menuData.filter(
 					(itemMenu) => itemMenu.tag === action.payload.tag
 				);
