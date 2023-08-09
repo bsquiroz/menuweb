@@ -31,3 +31,7 @@ export const productsMenu = (products) => {
 		)
 	);
 };
+
+export const resetOrderLocalStorage = (order) => {
+	localStorage.setItem("orderMenu", JSON.stringify(order));
+};

@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { menuData } from "../data/menu";
+import { resetOrderLocalStorage } from "../helpers";
 
 const initialState = {
 	menuData: menuData,
@@ -9,7 +10,7 @@ const initialState = {
 	showBannerProduct: false,
 	showMenu: false,
 	showOrder: false,
-	order: {},
+	order: JSON.parse(localStorage.getItem("orderMenu")) || {},
 };
 
 export const counterSlice = createSlice({
@@ -53,6 +54,8 @@ export const counterSlice = createSlice({
 					amount: 1,
 				};
 			}
+
+			resetOrderLocalStorage(state.order);
 		},
 		handleRestOrder: (state, action) => {
 			if (state.order[action.payload].amount === 1) {
@@ -60,9 +63,13 @@ export const counterSlice = createSlice({
 			} else {
 				state.order[action.payload].amount--;
 			}
+
+			resetOrderLocalStorage(state.order);
 		},
 		handleDeleteOrder: (state, action) => {
 			delete state.order[action.payload];
+
+			resetOrderLocalStorage(state.order);
 		},
 	},
 });
