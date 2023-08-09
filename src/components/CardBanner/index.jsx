@@ -69,11 +69,16 @@ export const CardBanner = () => {
 					></video>
 				</div>
 
-				<div
-					className="banner__show__more"
-					onClick={() => dispatch(handleShowBannerProduct(true))}
-				>
-					<p>Ver información</p>
+				<div className="banner__options">
+					<button
+						className="banner__options__btn btn__showmore"
+						onClick={() => dispatch(handleShowBannerProduct(true))}
+					>
+						Ver información
+					</button>
+					<button className="banner__options__btn btn__order">
+						Pedir
+					</button>
 				</div>
 
 				<div className={classBannerInfo}>
@@ -108,6 +113,10 @@ export const CardBanner = () => {
 							)}
 						</ul>
 					</div>
+
+					<button className="banner__options__btn btn__order">
+						Pedir
+					</button>
 				</div>
 			</div>
 		</div>

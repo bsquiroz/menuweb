@@ -40,14 +40,14 @@
 
 .banner__info {
 	position: absolute;
-	top: var(--h-navbar);
+	top: 0;
 	left: 0;
 	width: 100%;
-	height: calc(100% - var(--h-navbar));
+	height: 100%;
 	background: linear-gradient(
 		0deg,
 		var(--primary-100) 0%,
-		rgba(0, 0, 0, 0) 100%
+		rgba(0, 0, 0, 0.8) 100%
 	);
 	opacity: 0;
 	visibility: hidden;
@@ -115,15 +115,32 @@
 	padding: 5px;
 }
 
-.banner__show__more {
-	background-color: var(--primary-100);
+.banner__options {
 	position: absolute;
 	bottom: 0;
 	width: 100%;
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	gap: 1rem;
+}
+
+.banner__options__btn {
 	padding: 1rem;
-	text-align: center;
-	font-weight: bold;
+	width: 100%;
+	border-radius: 0.5rem;
+	border: none;
+	cursor: pointer;
 	text-transform: uppercase;
-	border-top-left-radius: 1rem;
-	border-top-right-radius: 1rem;
+}
+
+.btn__showmore {
+	font-weight: bold;
+	color: var(--text-100);
+	background-color: var(--primary-100);
+}
+
+.btn__order {
+	font-weight: bold;
+	color: var(--primary-100);
+	background-color: var(--text-100);
 }

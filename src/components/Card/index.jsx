@@ -3,24 +3,36 @@ import "./styles.css";
 
 import { useDispatch } from "react-redux";
 import { findProductMenuById, handleShowMenu } from "../../store/menuSlice";
+import { formattedPrice } from "../../helpers";
 
-export const Card = ({ title, picture, id }) => {
+export const Card = ({ title, picture, id, price }) => {
 	const dispatch = useDispatch();
 
-	const handleClick = (cardId) => {
+	const handleShowProduct = (cardId) => {
 		dispatch(findProductMenuById({ id: cardId }));
 		dispatch(handleShowMenu(false));
+	};
+
+	const handleOrder = (cardId) => {
+		console.log(cardId);
 	};
 
 	return (
 		<div className="card">
 			<div className="card__img">
 				<div className="card__banner">
-					<i class="bx bxs-show" onClick={() => handleClick(id)}></i>
+					<i
+						className="bx bxs-show"
+						onClick={() => handleShowProduct(id)}
+					></i>
 				</div>
 				<img src={picture} alt={`imagen ${title}`} />
 			</div>
-			<h3>{title}</h3>
+			<div className="card__info">
+				<h4>{title}</h4>
+				<p className="card__price">{formattedPrice(price)}</p>
+				<button className="card__btn">Pedir</button>
+			</div>
 		</div>
 	);
 };

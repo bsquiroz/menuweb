@@ -8,8 +8,14 @@ export const Board = () => {
 
 	return (
 		<div className="board">
-			{items.map(({ id, title, picture }) => (
-				<Card key={id} id={id} title={title} picture={picture} />
+			{items.map(({ id, title, picture, price }) => (
+				<Card
+					key={id}
+					id={id}
+					title={title}
+					picture={picture}
+					price={price}
+				/>
 			))}
 		</div>
 	);
