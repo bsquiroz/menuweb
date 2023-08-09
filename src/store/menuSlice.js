@@ -9,6 +9,7 @@ const initialState = {
 	showBannerProduct: false,
 	showMenu: false,
 	showOrder: false,
+	order: {},
 };
 
 export const counterSlice = createSlice({
@@ -40,6 +41,29 @@ export const counterSlice = createSlice({
 		handleShowOrder: (state, action) => {
 			state.showOrder = action.payload;
 		},
+		handleAddOrder: (state, action) => {
+			const item = state.menuData.find(
+				(product) => product.id === action.payload
+			);
+			if (state.order[item.id]) {
+				state.order[item.id]["amount"]++;
+			} else {
+				state.order[item.id] = {
+					...item,
+					amount: 1,
+				};
+			}
+		},
+		handleRestOrder: (state, action) => {
+			if (state.order[action.payload].amount === 1) {
+				delete state.order[action.payload];
+			} else {
+				state.order[action.payload].amount--;
+			}
+		},
+		handleDeleteOrder: (state, action) => {
+			delete state.order[action.payload];
+		},
 	},
 });
 
@@ -49,6 +73,9 @@ export const {
 	handleShowBannerProduct,
 	handleShowMenu,
 	handleShowOrder,
+	handleAddOrder,
+	handleRestOrder,
+	handleDeleteOrder,
 } = counterSlice.actions;
 
 export default counterSlice.reducer;

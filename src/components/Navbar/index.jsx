@@ -15,6 +15,7 @@ export const Navbar = () => {
 	const products = useSelector((state) => state.menu.menuData);
 	const showMenu = useSelector((state) => state.menu.showMenu);
 	const showOrder = useSelector((state) => state.menu.showOrder);
+	const order = useSelector((state) => state.menu.order);
 
 	const [itemProducts, setItemProducts] = useState(productsMenu(products));
 
@@ -55,7 +56,12 @@ export const Navbar = () => {
 						}}
 					>
 						<div>
-							<span>11</span>
+							<span>
+								{Object.values(order).reduce(
+									(acum, curr) => (acum += curr.amount),
+									0
+								)}
+							</span>
 						</div>
 					</i>
 					<i

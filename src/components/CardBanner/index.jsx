@@ -5,6 +5,7 @@ import {
 	handleShowBannerProduct,
 	handleShowMenu,
 	handleShowOrder,
+	handleAddOrder,
 } from "../../store/menuSlice";
 import "./styles.css";
 import { formattedPrice, formattedOffer } from "../../helpers";
@@ -82,7 +83,15 @@ export const CardBanner = () => {
 					>
 						Ver información
 					</button>
-					<button className="banner__options__btn btn__order">
+					<button
+						className="banner__options__btn btn__order"
+						onClick={() => {
+							dispatch(findProductMenuById({ id: null }));
+							dispatch(handleShowMenu(false));
+							dispatch(handleShowOrder(false));
+							dispatch(handleAddOrder(selectItem.id));
+						}}
+					>
 						Pedir
 					</button>
 				</div>
@@ -120,7 +129,15 @@ export const CardBanner = () => {
 						</ul>
 					</div>
 
-					<button className="banner__options__btn btn__order">
+					<button
+						className="banner__options__btn btn__order"
+						onClick={() => {
+							dispatch(findProductMenuById({ id: null }));
+							dispatch(handleShowMenu(false));
+							dispatch(handleShowOrder(false));
+							dispatch(handleAddOrder(selectItem.id));
+						}}
+					>
 						Pedir
 					</button>
 				</div>

@@ -6,6 +6,7 @@ import {
 	findProductMenuById,
 	handleShowMenu,
 	handleShowOrder,
+	handleAddOrder,
 } from "../../store/menuSlice";
 import { formattedPrice } from "../../helpers";
 
@@ -16,10 +17,6 @@ export const Card = ({ title, picture, id, price }) => {
 		dispatch(findProductMenuById({ id: cardId }));
 		dispatch(handleShowMenu(false));
 		dispatch(handleShowOrder(false));
-	};
-
-	const handleOrder = (cardId) => {
-		console.log(cardId);
 	};
 
 	return (
@@ -36,7 +33,12 @@ export const Card = ({ title, picture, id, price }) => {
 			<div className="card__info">
 				<h4>{title}</h4>
 				<p className="card__price">{formattedPrice(price)}</p>
-				<button className="card__btn">Pedir</button>
+				<button
+					className="card__btn"
+					onClick={() => dispatch(handleAddOrder(id))}
+				>
+					Pedir
+				</button>
 			</div>
 		</div>
 	);
