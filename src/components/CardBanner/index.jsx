@@ -4,6 +4,7 @@ import {
 	findProductMenuById,
 	handleShowBannerProduct,
 	handleShowMenu,
+	handleShowOrder,
 } from "../../store/menuSlice";
 import "./styles.css";
 import { formattedPrice, formattedOffer } from "../../helpers";
@@ -50,6 +51,7 @@ export const CardBanner = () => {
 					onClick={() => {
 						dispatch(handleShowMenu(false));
 						dispatch(findProductMenuById({ id: null }));
+						dispatch(handleShowOrder(false));
 					}}
 				></i>
 				{showBannerProduct && (
@@ -72,7 +74,11 @@ export const CardBanner = () => {
 				<div className="banner__options">
 					<button
 						className="banner__options__btn btn__showmore"
-						onClick={() => dispatch(handleShowBannerProduct(true))}
+						onClick={() => {
+							dispatch(handleShowBannerProduct(true));
+							dispatch(handleShowMenu(false));
+							dispatch(handleShowOrder(false));
+						}}
 					>
 						Ver información
 					</button>

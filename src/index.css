@@ -2,7 +2,8 @@
 	font-size: 16px;
 	font-family: Arial, Helvetica, sans-serif;
 	--z-icon-back: 1000;
-	--z-header-navbar: 10000;
+	--z-header-navbar: 11000;
+	--z-order: 10000;
 	--max-w: 600px;
 	--h-navbar: 50px;
 	--primary-100: #26a69a;
@@ -53,6 +54,7 @@ img {
 
 .bx {
 	color: var(--primary-100);
+	cursor: pointer;
 }
 
 ul {

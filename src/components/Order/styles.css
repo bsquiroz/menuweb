@@ -1,0 +1,33 @@
+.order {
+	position: fixed;
+	top: var(--h-navbar);
+	width: 50%;
+	right: 0;
+	height: calc(100% - var(--h-navbar));
+	background-color: var(--bg-100);
+	display: flex;
+	gap: 1rem;
+	flex-direction: column;
+	z-index: var(--z-order);
+	padding: 1rem;
+	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+	opacity: 0;
+	transform: translateX(100%);
+	transition: opacity 0.5s, transform 0.5s;
+}
+
+.order--show {
+	opacity: 1;
+	transform: translateX(0);
+}
+
+.order__items {
+	background-color: var(--bg-200);
+	height: 80%;
+	border-radius: 1rem;
+}
+.order__total {
+	background-color: var(--bg-300);
+	height: 20%;
+	border-radius: 1rem;
+}

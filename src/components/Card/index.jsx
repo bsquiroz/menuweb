@@ -2,7 +2,11 @@ import React from "react";
 import "./styles.css";
 
 import { useDispatch } from "react-redux";
-import { findProductMenuById, handleShowMenu } from "../../store/menuSlice";
+import {
+	findProductMenuById,
+	handleShowMenu,
+	handleShowOrder,
+} from "../../store/menuSlice";
 import { formattedPrice } from "../../helpers";
 
 export const Card = ({ title, picture, id, price }) => {
@@ -11,6 +15,7 @@ export const Card = ({ title, picture, id, price }) => {
 	const handleShowProduct = (cardId) => {
 		dispatch(findProductMenuById({ id: cardId }));
 		dispatch(handleShowMenu(false));
+		dispatch(handleShowOrder(false));
 	};
 
 	const handleOrder = (cardId) => {

@@ -8,6 +8,7 @@ const initialState = {
 	selectItem: null,
 	showBannerProduct: false,
 	showMenu: false,
+	showOrder: false,
 };
 
 export const counterSlice = createSlice({
@@ -36,6 +37,9 @@ export const counterSlice = createSlice({
 		handleShowMenu: (state, action) => {
 			state.showMenu = action.payload;
 		},
+		handleShowOrder: (state, action) => {
+			state.showOrder = action.payload;
+		},
 	},
 });
 
@@ -44,6 +48,7 @@ export const {
 	filterMenuData,
 	handleShowBannerProduct,
 	handleShowMenu,
+	handleShowOrder,
 } = counterSlice.actions;
 
 export default counterSlice.reducer;

@@ -5,6 +5,7 @@ import {
 	filterMenuData,
 	findProductMenuById,
 	handleShowMenu,
+	handleShowOrder,
 } from "../../store/menuSlice";
 import { DarkMode } from "../DarkMode";
 import { productsMenu } from "../../helpers";
@@ -13,6 +14,7 @@ export const Navbar = () => {
 	const dispatch = useDispatch();
 	const products = useSelector((state) => state.menu.menuData);
 	const showMenu = useSelector((state) => state.menu.showMenu);
+	const showOrder = useSelector((state) => state.menu.showOrder);
 
 	const [itemProducts, setItemProducts] = useState(productsMenu(products));
 
@@ -20,6 +22,9 @@ export const Navbar = () => {
 	const classIconMenu = showMenu
 		? "bx bx-x icon--menu"
 		: "bx bx-menu icon--menu";
+	const classIconOrder = showOrder
+		? "bx bx-x icon--order"
+		: "bx bx-bowl-hot icon--order";
 
 	const handleSetItemProducts = (title) => {
 		setItemProducts(
@@ -41,8 +46,22 @@ export const Navbar = () => {
 				<div className="navbar__opt">
 					<DarkMode />
 					<i
+						className={classIconOrder}
+						onClick={() => {
+							if (showMenu) {
+								dispatch(handleShowMenu(false));
+							}
+							dispatch(handleShowOrder(!showOrder));
+						}}
+					></i>
+					<i
 						className={classIconMenu}
-						onClick={() => dispatch(handleShowMenu(!showMenu))}
+						onClick={() => {
+							if (showOrder) {
+								dispatch(handleShowOrder(false));
+							}
+							dispatch(handleShowMenu(!showMenu));
+						}}
 					></i>
 				</div>
 
