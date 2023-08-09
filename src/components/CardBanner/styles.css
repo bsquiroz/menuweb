@@ -58,6 +58,8 @@
 	justify-content: flex-end;
 	padding: 1rem;
 	gap: 1rem;
+	backdrop-filter: blur(3px);
+	-webkit-backdrop-filter: blur(3px);
 }
 
 .banner__info--show {
