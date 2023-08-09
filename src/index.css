@@ -34,6 +34,7 @@ body.dark_mode {
 body {
 	background-color: var(--bg-100);
 	color: var(--text-100);
+	user-select: none;
 }
 
 * {

@@ -28,8 +28,24 @@
 	font-size: 2rem;
 }
 
-.icon--menu {
-	cursor: pointer;
+.icon--order {
+	position: relative;
+}
+
+.icon--order > div {
+	background-color: var(--primary-100);
+	color: var(--text-100);
+	width: 20px;
+	height: 20px;
+	font-size: 0.8rem;
+	font-weight: bold;
+	position: absolute;
+	top: 1rem;
+	left: 1rem;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .navbar__opt {

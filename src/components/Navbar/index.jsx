@@ -53,7 +53,11 @@ export const Navbar = () => {
 							}
 							dispatch(handleShowOrder(!showOrder));
 						}}
-					></i>
+					>
+						<div>
+							<span>11</span>
+						</div>
+					</i>
 					<i
 						className={classIconMenu}
 						onClick={() => {
