@@ -17,7 +17,8 @@
 
 .banner {
 	position: relative;
-	width: 100%;
+	max-width: var(--max-w);
+	margin: 0 auto;
 	height: calc(100% - var(--h-navbar));
 }
 
@@ -38,7 +39,7 @@
 }
 
 .banner__info {
-	position: fixed;
+	position: absolute;
 	top: var(--h-navbar);
 	left: 0;
 	width: 100%;
@@ -100,16 +101,12 @@
 
 .ingredients {
 	margin-top: 1rem;
-	/* display: flex;
-	flex-wrap: wrap; */
 	gap: 0.5rem;
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 }
 .ingredient {
 	text-align: center;
-	/* flex-basis: 20%;
-	flex-grow: 1; */
 	border: 1px solid var(--text-100);
 	border-radius: 5px;
 	display: grid;

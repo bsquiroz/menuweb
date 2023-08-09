@@ -61,3 +61,17 @@ ul {
 span {
 	display: inline-block;
 }
+
+body::-webkit-scrollbar {
+	width: 5px;
+	height: 5px;
+}
+
+body::-webkit-scrollbar-thumb {
+	background: var(--primary-100);
+	border-radius: 10px;
+}
+
+body::-webkit-scrollbar-track {
+	background: var(--bg-100);
+}
