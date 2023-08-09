@@ -13,8 +13,11 @@ export const Card = ({ title, picture, id }) => {
 	};
 
 	return (
-		<div className="card" onClick={() => handleClick(id)}>
+		<div className="card">
 			<div className="card__img">
+				<div className="card__banner">
+					<i class="bx bxs-show" onClick={() => handleClick(id)}></i>
+				</div>
 				<img src={picture} alt={`imagen ${title}`} />
 			</div>
 			<h3>{title}</h3>
