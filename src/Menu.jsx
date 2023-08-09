@@ -11,12 +11,12 @@ import {
 export const Menu = () => {
 	return (
 		<>
+			<Navbar />
 			<Container>
 				<Header />
 				<Board />
 				<CardBanner />
 			</Container>
-			<Navbar />
 			<Footer />
 		</>
 	);
